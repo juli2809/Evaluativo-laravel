@@ -1,0 +1,222 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source "../**/*.blade.php";
+@source "../**/*.js";
+@source "../**/*.vue";
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: sans-serif;
+}
+header nav{
+  display: flex;
+  justify-content: space-around;
+  height: 3em;
+  border-bottom: 2px solid gray;
+  margin-bottom: 10px;
+  align-items: center;
+  & a{
+    font-size: 1.3em;
+    text-decoration: none;
+    color: rgb(99, 99, 99);
+    padding: 0 0.5em;
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+      background-color: gray;
+      color: white
+    }
+  }
+}
+.productos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  padding: 0 2em;
+  & .producto{
+    display: flex; 
+    padding: 6px;
+    border: 2px solid gray;
+    flex-direction: column;
+    width: 215px;
+    text-align: center;
+    gap: 4px;
+    & img{
+      height: 215px;
+      padding: 4px;
+      border: 1px solid gray;
+      margin: 4px;
+      object-fit: contain;
+    }
+    & .comprar{
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      align-items: center;
+      & .precio::before{
+        content: "$ ";
+      }
+      & .agregar-compra{
+        padding: 5px;
+        background-color: white;
+        border: 1px solid gray;
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+        &:hover{
+          background-color: gray;
+        }
+      }
+    }
+    & .detalles{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      & button{
+        font-size: 1.3em
+      }
+      & .actions{
+        display: flex;
+        gap: 2px;
+      }
+    }
+  }
+}
+
+.producto_detalle{
+  display: flex; 
+  padding: 6px;
+  border: 2px solid gray;
+  flex-direction: column;
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  gap: 4px;
+  & img{
+    height: 215px;
+    padding: 4px;
+    border: 1px solid gray;
+    margin: 4px;
+    object-fit: contain;
+  }
+  & .comprar{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    & .precio::before{
+      content: "$ ";
+    }
+  }
+  & .detalles{
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+    & button{
+      font-size: 1.5em
+    }
+    & .actions{
+      display: flex;
+      gap: 2px;
+    }
+  }
+}
+.producto_nuevo, .editar_producto{
+  display: flex; 
+  padding: 6px;
+  border: 2px solid gray;
+  flex-direction: column;
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  & .img{
+    height: 215px;
+    padding: 4px;
+    width: 100%;
+    border: 1px solid gray;
+    margin: 4px;
+    display: grid;
+    place-content: center;
+    grid-template-columns: 100%;
+    text-align: center;
+  }
+  & input{
+    width: 100%;
+    padding: 0.5em;
+  }
+  & select{
+    padding: 0.5em;
+  }
+
+}
+
+button{
+    padding: 5px;
+    background-color: white;
+    border: 1px solid gray;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    &:hover{
+      background-color: gray;
+    }
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 3px solid rgb(73, 56, 73);
+  margin-top: 1em;
+}
+
+th,
+td {
+  border: 1px solid rgb(59, 59, 59);
+  padding: 0.2em;
+}
+.categorias{
+    width: 90%;
+    margin: 0 auto;
+    & tr td:last-child{
+      display: flex;
+      justify-content: center;
+    }
+    & tr th:last-child{
+      width: max-content;
+    }
+    & tr input{
+      width: 100%;
+      padding: 0.5em;
+    }
+}
+.errors, .nuevo-producto{
+  width: 100%;
+  text-align: center;
+  margin-top: 1em;
+}
+.filtrar-productos{
+  margin-bottom: 10px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  & select{
+    margin-left: 8px;
+    padding: 0.5em;
+  }
+}

@@ -1,0 +1,153 @@
+/* Estilos generales */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    padding: 10px;
+    border-bottom: 2px solid #ffffff; /* Cambiar a blanco */
+    display: flex; /* Alinear elementos en fila */
+    justify-content: space-between; /* Espaciado entre elementos */
+}
+
+nav {
+    display: flex;
+    flex-direction: row; /* Cambiar a horizontal */
+    align-items: center; /* Alinear al centro */
+    background-color: #1f1f1f;
+    padding: 10px 0;
+}
+
+nav a {
+    padding: 10px 20px; /* Ajustar el padding */
+    border-radius: 5px;
+    background-color: #007BFF; /* Fondo azul para los enlaces */
+    margin: 0 5px; /* Espaciado entre enlaces */
+}
+
+nav a:hover {
+    background-color: #0056b3; /* Cambiar a un azul más oscuro al pasar el mouse */
+    color: #ffffff; /* Cambiar el color del texto al pasar el mouse */
+}
+
+/* Estilos para el buscador */
+.buscador {
+    padding: 9px; /* Aumentar el tamaño del buscador */
+    font-size: 7px; /* Ajustar el tamaño de la fuente */
+    border-radius: 5px; /* Hacer bordes redondeados */
+    width: 40%; /* Ajustar el ancho del buscador */
+    border: 1px solid #007BFF; /* Borde azul */
+    background-color: #ffffff; /* Fondo blanco */
+}
+
+.buscador:focus{
+    border-color: #0056b3; /* Cambiar el color del borde al enfocar */
+}
+
+
+
+.buscador:focus{
+    border-color: #0056b3; /* Cambiar el color del borde al enfocar */
+}
+
+
+
+
+/* Línea horizontal para separar */
+hr {
+    border: 1px solid #ffffff; /* Línea blanca */
+    margin: 20px 0; /* Espaciado vertical */
+}
+
+/* Estilos para el carrito */
+h1 {
+    color: #ffffff; /* Cambiar a blanco */
+}
+
+.productos .producto{
+    border: 1px solid #333;
+    padding: 30px; /* Aumentar el tamaño de las tarjetas */
+    margin: 10px 0;
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    transition: transform 0.2s;
+    width: 600px; /* Aumentar aún más el tamaño de las tarjetas */
+    display: inline-block; /* Para que se alineen en fila */
+}
+
+.producto:hover {
+    transform: scale(1.05);
+}
+
+button {
+    background-color: purple;
+    color: white; /* Cambiar el color del texto */
+    border: none;
+    padding: 1px; /* Ajustar el padding para que coincida con los botones de la barra de navegación */
+    cursor: pointer;
+    border-radius: 7px;
+    font-size: 15px;
+    height: 18px;
+}
+
+button:hover {
+    background-color: #0056b3; /* Cambiar a un color azul al pasar el mouse */
+}
+
+/* Estilos para el botón de ver detalles */
+.detalles a {
+    background-color: purple; /* Cambiar a un color azul */
+    color: #ffffff; /* Cambiar el color del texto */
+    padding: 8px;/* Ajustar el padding para que coincida con los botones de la barra de navegación */
+    border-radius: 7px;
+    text-decoration: none; /* Sin subrayado */
+}
+
+.detalles a:hover {
+    background-color: #0056b3; /* Cambiar a un color azul más oscuro al pasar el mouse */
+}
+
+.producto_nuevo {
+    display: flex;
+    flex-direction: column; /* Colocar los elementos en columna */
+    width: 30%; /* Ajustar el ancho del formulario */
+    margin: 0 auto; /* Centrar el formulario */
+    padding: 20px; /* Añadir relleno */
+    background-color: #1f1f1f; /* Fondo gris oscuro */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+.producto_nuevo input,
+.producto_nuevo select,
+.producto_nuevo button {
+    margin-bottom: 15px; /* Espaciado entre elementos */
+    padding: 10px; /* Relleno para los campos */
+    font-size: 14px; /* Tamaño de fuente */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #007BFF; /* Borde azul */
+    text-align: center;
+}
+
+.producto_nuevo button {
+    background-color: #007BFF; /* Fondo azul para el botón */
+    color: white; /* Color del texto del botón */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+}
+
+.producto_nuevo button:hover {
+    background-color: #0056b3; /* Cambiar a un azul más oscuro al pasar el mouse */
+}
+
+.detalles button {
+    padding: 16px; /* Ajustar el tamaño del botón */
+    border-radius: 7px; /* Bordes redondeados */
+    background-color:purple;
+    color: white; 
+    cursor: pointer; 
+}
+
+.detalles button:hover {
+    background-color: #0056b3; /* Cambiar a un azul más oscuro al pasar el mouse */
+}
