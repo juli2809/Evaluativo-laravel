@@ -5,33 +5,57 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CarritoController;
 use Illuminate\Support\Facades\Route;
 
+// Ruta principal muestra login siempre
 Route::get('/', function () {
-    return view('welcome');
+    auth()->logout(); // Forzar cierre de sesión
+    return view('auth.login');
 });
 
-Route::get('/productos', [ProductoController::class , 'index'])->name('producto.index');
+// Rutas accesibles sin autenticación
+Route::group([], function () {
+    // Página de bienvenida pública
+    Route::get('/welcome', function () {
+        return view('welcome');
+    });
+    
+    // Rutas de autenticación
+Auth::routes([
+    'register' => true,
+    'verify' => true
+]);
+});
 
-Route::get('/producto/nuevo', [ProductoController::class, 'create'])->name('producto.create');
+// Solo para usuarios autenticados
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Página principal después de login
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+        ->name('home')
+        ->middleware('auth'); // Solo verifica autenticación básica
+    
+    // Rutas de productos
+    Route::prefix('productos')->middleware(['auth'])->group(function () {
+        Route::get('/', [ProductoController::class, 'index'])->name('producto.index');
+        Route::get('/nuevo', [ProductoController::class, 'create'])->name('producto.create');
+        Route::post('/store', [ProductoController::class, 'store'])->name('producto.store');
+        Route::get('/{producto}', [ProductoController::class, 'show'])->name('producto.show');
+        Route::get('/edit/{producto}', [ProductoController::class, 'edit'])->name('producto.edit');
+        Route::patch('/{producto}', [ProductoController::class, 'update'])->name('producto.update');
+        Route::delete('/{producto}', [ProductoController::class, 'destroy'])->name('producto.delete');
+    });
 
-Route::get('/producto/{producto}', [ProductoController::class, 'show'])->name('producto.show');
+    // Rutas de categorías
+    Route::prefix('categorias')->group(function () {
+        Route::get('/', [CategoriaController::class, 'index'])->name('categoria.index');
+        Route::post('/store', [CategoriaController::class, 'store'])->name('categoria.store');
+        Route::get('/edit/{categoria}', [CategoriaController::class, 'edit'])->name('categoria.edit');
+        Route::patch('/{categoria}', [CategoriaController::class, 'update'])->name('categoria.update');
+        Route::delete('/{categoria}', [CategoriaController::class, 'destroy'])->name('categoria.delete');
+    });
 
-Route::post('/producto/store', [ProductoController::class, 'store'])->name('producto.store');
-
-Route::delete('/producto/{producto}', [ProductoController::class, 'destroy'])->name('producto.delete');
-
-Route::get('/producto/edit/{producto}', [ProductoController::class, 'edit'])->name('producto.edit');
-
-Route::patch('/producto/{producto}', [ProductoController::class, 'update'])->name('producto.update');
-
-Route::get('/categorias', [CategoriaController::class , 'index'])->name('categoria.index');
-Route::post('/carrito/agregar/{productoId}', [CarritoController::class, 'agregar'])->name('carrito.agregar');
-Route::delete('/carrito/eliminar/{productoId}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
-Route::get('/carrito', [CarritoController::class, 'mostrar'])->name('carrito.mostrar');
-
-Route::post('/categoria/store', [CategoriaController::class, 'store'])->name('categoria.store');
-
-Route::get('/categoria/edit/{categoria}', [CategoriaController::class, 'edit'])->name('categoria.edit');
-
-Route::delete('/categoria/{categoria}', [CategoriaController::class, 'destroy'])->name('categoria.delete');
-
-Route::patch('/categoria/{categoria}', [CategoriaController::class, 'update'])->name('categoria.update');
+    // Rutas de carrito
+    Route::prefix('carrito')->group(function () {
+        Route::get('/', [CarritoController::class, 'mostrar'])->name('carrito.mostrar');
+        Route::post('/agregar/{productoId}', [CarritoController::class, 'agregar'])->name('carrito.agregar');
+        Route::delete('/eliminar/{productoId}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
+    });
+});

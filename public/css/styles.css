@@ -149,5 +149,61 @@ button:hover {
 }
 
 .detalles button:hover {
-    background-color: #0056b3; /* Cambiar a un azul más oscuro al pasar el mouse */
+    background-color: #0056b3;
+}
+
+/* Login Styles */
+.login-container {
+    padding: 40px 0;
+}
+
+.auth-card {
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.auth-header {
+    background-color: #007BFF;
+    color: white;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.auth-body {
+    padding: 30px;
+}
+
+.auth-body .form-control {
+    background-color: #2d2d2d;
+    border: 1px solid #007BFF;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.auth-body .form-control:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.auth-body .btn-primary {
+    background-color: #007BFF;
+    border: none;
+    padding: 10px 20px;
+}
+
+.auth-body .btn-link {
+    color: #007BFF;
+}
+
+.auth-body .btn-link:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.auth-body .invalid-feedback {
+    color: #ff6b6b;
 }
